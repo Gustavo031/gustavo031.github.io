@@ -1,12 +1,97 @@
 <!DOCTYPE html>
-<html lang="pt-br">
-<head>
-   <meta charset="UTF-8">
-   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>Minha primeira Página Web</title>
-</head>
-<body>
-   <h1>Turma AIPR 2020 M1</h1>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="" content="">
+    <title>aula03</title>
+  </head>
+  <body>
+    <h1>Aula 03 - 09/09/2020</h1>
+    <h2>CSS - Cascading Style Sheet</h2>
+   <h2>Folha de Estilo em Cascata</h2>
   
-</body>
+   <img src="./images/html-css-js.jpg"
+       alt="Logotipo HTML CSS e Javascript"
+       width="640"> <!--Largura de 640 pixels-->
+  
+   <img src="./images/html.png"
+       alt="Logotipo HTML">
+ 
+   <img src="./images/css.png"
+       alt="Logotipo CSS">
+  
+   <img src="./images/js.png"
+       alt="Logotipo Javascript">
+       <head>
+   <meta charset="UTF-8">
+   <meta name="viewport"
+         content="width=device-width, initial-scale=1.0">
+   <title>aula03 - Webdesign com estilo CSS</title>
+   <link rel="stylesheet" href="./css/estilo.css">
+</head>
+
+/*Seletor para o corpo da página*/
+body {
+   /*Propriedades e valores*/
+   background-color: blueviolet;
+   color: cyan;
+}
+
+/*Seletor h1 e suas propriedades*/
+h1 {
+   color: greenyellow;
+   font-family: 'Courier New', Courier, monospace;
+   font-size: 400%;
+}
+ 
+/*Seletor h2, propriedades e valores*/
+h2 {
+   color: yellow;
+   font-family: serif;
+   font-size: 250%;
+}
+/*Seletor da Imagem, propriedades e valores*/
+img {
+   height: 200px;/*Altura em pixels*/
+   width: 200px;/*Largura em pixels*/
+   box-shadow: 5px 5px 10px black;/*sombra*/
+   border-radius: 20px;/*Borda arredondada*/
+}
+<!-- Identificação da imagem com id-->
+   <img id="imgPrincipal"
+       src="./images/html-css-js.jpg"
+       alt="Logotipo HTML CSS e Javascript"
+       width="640"> <!--Largura de 640 pixels-->
+  
+   <!-- Classificação das imagens com o class-->   
+   <img class="logo"
+       src="./images/html.png"
+       alt="Logotipo HTML">
+ 
+   <img class="logo"
+       src="./images/css.png"
+       alt="Logotipo CSS">
+  
+   <img class="logo"
+       src="./images/js.png"
+       alt="Logotipo Javascript">
+
+/*Identificador usa-se a HASH #*/
+img#imgPrincipal {
+   /*Centralização da Imagem*/
+   display: block;
+   margin: 50px auto;
+   width: 50%;
+   height: auto;
+}
+ 
+/*Classes usam o PONTO .*/
+img.logo {
+   margin-left: 15%;
+   /*Arredondamento da imagem*/
+   border-radius: 50%;
+}
+/*Propriedade deve estar dentro de um seletor*/
+text-align: center;
+  </body>
 </html>
