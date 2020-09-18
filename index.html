@@ -1,606 +1,86 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-   <meta charset="UTF-8">
-   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>Depuração de Código Javascript</title>
-   <!-- Ligação entre o index e o estilo -->
-   <link rel="stylesheet" href="./css/estilo.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/main.css">
+    <title>Calculadora</title>
 </head>
 <body>
-   <h1>Uso do Chrome Dev Tools</h1>
-   <p>
-       Depurar o código significa encontrar erros.<br>
-       No navegador pressione a tecla F12.
-   </p>
-  
-body {
-   background-color: burlywood;
-   color: brown;
-}
-
-<body>
-   <!--Cabeçalho-->
-   <header>   
-       <h1>Uso do Chrome Dev Tools</h1>
-       <p>
-           Depurar o código significa encontrar erros.<br>
-           No navegador pressione a tecla F12.
-       </p>
-   </header>
- 
-   <!--Parte principal-->
-   <main class="container">
-       <input type="text" name="num1" id="num1">
-       <input type="text" name="num2" id="num2">
-       <button type="submit" id="btnSomar">
-           Somar num1 + num2
-       </button>
-       <p class="resposta">Resultado da operação</p>
-   </main>
-</body>
-
-header {
-   background-color: azure;
-   border: 3px ridge blueviolet;
-   border-radius: 5px;
-   width: 400px;
-   margin: 20px auto; /*Centralizando a caixa*/
-   text-align: center; /*Cantralização do texto*/
-   box-shadow: 0 0 5px lightcoral;
-}
-
-<input type="text" name="num1" id="num1" autofocus tabindex="1">
-       <input type="text" name="num2" id="num2" tabindex="2">
-       <button type="submit" id="btnSomar" tabindex="3">
-           Somar num1 + num2
-       </button>
-       
- main input {
-   /*Quebra linha e coloco um abaixo do outro*/
-   display: block;
-   margin: 10px;
-   padding: 10px;
-   width: 50px;
-   border-radius: 3px;
-   background-color: darkblue;
-   color: cyan;
-   font-weight: bold; /*Negrito*/
-}
-
-main button {
-   margin: 10px;
-   border: 1px solid darkblue;
-   border-radius: 3px;
-   cursor: pointer; /*Mudança do cursor do mouse*/
-   font-family: 'Courier New', Courier, monospace;
-   font-weight: bolder;
-   font-size: 18px;
-   width: 220px;
-   padding: 6px 10px;
-   /*Sombra interna*/
-   box-shadow: inset 0 0 5px lightskyblue;
-   transition: 0.3s;
-}
-/*Ao passar o mouse por cima*/
-main button:hover {
-   /*Sombra externa*/
-   box-shadow: 0 0 5px darkblue;
-   text-shadow: 0 0 3px lightskyblue;
-   transition: 0.3s;
-}
-
-<script src="./js/main.js"></script>
-</body>
-alert("Alo Ha Mundo! Funcionou...");
-  
-  //Definição das variáveis
-//Conexão com os elementos HTML
-//Campos de entrada
-let entradas = document.querySelectorAll('input');
-//Botão somar
-let btnSomar = document.querySelector('#btnSomar');
-//Parágrafo de resposta
-let resposta = document.querySelector('.resposta')
- 
-//Definindo o número 1 e número 2
-let num1 = entradas[0];
-let num2 = entradas[1];
- 
-//Funções para pegar os valores
-function pegarNum1() {
-   return num1.value;
-}
-function pegarNum2() {
-   return num2.value;
-}
- 
-//Verificando se as entradas estão vazias
-function verificarEntradasVazias() {
-   //Se num1 ou num2 estiverem vazios
-   if(pegarNum1() === '' || pegarNum2() === ''){
-       return true; //Retorna verdadeiro
-   }else{ //Senão
-       return false; //Retorna Falso
-   }
-}
- 
-//Função Somar
-function somar(){
-   if(verificarEntradasVazias()){
-       atualizaResposta();
-   }else{
-       atualizaResposta();
-   }
-}
- 
-//Escuta de evento click do mouse
-btnSomar.addEventListener('click',somar);
- 
-//Atualizar o campo de resposta de acordo com a função
-function atualizaResposta() {
-   if(verificarEntradasVazias()){
-       resposta.textContent = "Erro: Preencha os dois números!"
-   }else{
-       let numero1 = pegarNum1();
-       let numero2 = pegarNum2();
-       let soma = numero1 + numero2;
-       resposta.textContent = `${numero1} + ${numero2} = ${soma}`;
-   }
-}
-
-/*Estilização da classe Resposta*/
-.resposta {
-   /*Centralizando o elemento na página*/
-   margin: 10px auto;
-   padding: 5px;
-   text-align: center;
-   border: 1px dotted white;
-   width: fit-content;
-}
-.errada {
-   background-color: red;
-   color: yellow;
-   outline: 2px double orange;
-}
-.certa {
-   background-color: palegreen;
-   color: blue;
-   outline: 2px double greenyellow;
-}
-
-//Atualizar o campo de resposta de acordo com a função
-function atualizaResposta() {
-   if(verificarEntradasVazias()){
-       resposta.classList.remove('certa');
-       resposta.classList.add('errada');
-       resposta.textContent = "Erro: Preencha os dois números!"
-   }else{
-       resposta.classList.remove('errada');
-       resposta.classList.add('certa');
-       let numero1 = pegarNum1();
-       let numero2 = pegarNum2();
-       let soma = numero1 + numero2;
-       resposta.textContent = `${numero1} + ${numero2} = ${soma}`;
-   }
-}
-
-//Atualizar o campo de resposta de acordo com a função
-function atualizaResposta() {
-   if(verificarEntradasVazias()){
-       resposta.classList.remove('certa');
-       resposta.classList.add('errada');
-       debugger;//Pressionar a tecla F12 no navegador
-       resposta.textContent1 = "Erro: Preencha os dois números!"
-   }else{
-       resposta.classList.remove('errada');
-       resposta.classList.add('certa');
-       let numero1 = pegarNum1();
-       let numero2 = pegarNum2();
-       let soma = numero1 + numero2;
-       resposta.textContent = `${numero1} + ${numero2} = ${soma}`;
-   }
-}
-
-//Atualizar o campo de resposta de acordo com a função
-function atualizaResposta() {
-   if(verificarEntradasVazias()){
-       resposta.classList.remove('certa');
-       resposta.classList.add('errada');
-       //debugger;
-       resposta.textContent = "Erro: Preencha os dois números!"
-   }else{
-       resposta.classList.remove('errada');
-       resposta.classList.add('certa');
-       let numero1 = pegarNum1();
-       numero1 = parseFloat(numero1);//Convertendo para número Real
-       let numero2 = pegarNum2();
-       numero2 = parseFloat(numero2);//Convertendo para número Real
-       let soma = numero1 + numero2;
-       resposta.textContent = `${numero1} + ${numero2} = ${soma}`;
-   }
-}
-
- 
-  //Definição das variáveis
-//Conexão com os elementos HTML
-//Campos de entrada
-let entradas = document.querySelectorAll('input');
-//Botão Subtrair
-let btnSubtrair= document.querySelector('#btnSomar');
-//Parágrafo de resposta
-let resposta = document.querySelector('.resposta')
- 
-//Definindo o número 1 e número 2
-let num1 = entradas[0];
-let num2 = entradas[1];
- 
-//Funções para pegar os valores
-function pegarNum1() {
-   return num1.value;
-}
-function pegarNum2() {
-   return num2.value;
-}
- 
-//Verificando se as entradas estão vazias
-function verificarEntradasVazias() {
-   //Se num1 ou num2 estiverem vazios
-   if(pegarNum1() === '' || pegarNum2() === ''){
-       return true; //Retorna verdadeiro
-   }else{ //Senão
-       return false; //Retorna Falso
-   }
-}
- 
-//Função Subtrair
-function Subtrair(){
-   if(verificarEntradasVazias()){
-       atualizaResposta();
-   }else{
-       atualizaResposta();
-   }
-}
- 
-//Escuta de evento click do mouse
-btnSubtrair.addEventListener('click',Subtrair);
- 
-//Atualizar o campo de resposta de acordo com a função
-function atualizaResposta() {
-   if(verificarEntradasVazias()){
-       resposta.textContent = "Erro: Preencha os dois números!"
-   }else{
-       let numero1 = pegarNum1();
-       let numero2 = pegarNum2();
-       let sutrair = numero1/numero2;
-       resposta.textContent = `${numero1} + ${numero2} = ${Subtrair}`;
-   }
-}
-
-/*Estilização da classe Resposta*/
-.resposta {
-   /*Centralizando o elemento na página*/
-   margin: 10px auto;
-   padding: 5px;
-   text-align: center;
-   border: 1px dotted white;
-   width: fit-content;
-}
-.errada {
-   background-color: red;
-   color: yellow;
-   outline: 2px double orange;
-}
-.certa {
-   background-color: palegreen;
-   color: blue;
-   outline: 2px double greenyellow;
-}
-
-//Atualizar o campo de resposta de acordo com a função
-function atualizaResposta() {
-   if(verificarEntradasVazias()){
-       resposta.classList.remove('certa');
-       resposta.classList.add('errada');
-       resposta.textContent = "Erro: Preencha os dois números!"
-   }else{
-       resposta.classList.remove('errada');
-       resposta.classList.add('certa');
-       let numero1 = pegarNum1();
-       let numero2 = pegarNum2();
-       let subtrair = numero1 / numero2;
-       resposta.textContent = `${numero1} + ${numero2} = ${subtrair}`;
-   }
-}
-
-//Atualizar o campo de resposta de acordo com a função
-function atualizaResposta() {
-   if(verificarEntradasVazias()){
-       resposta.classList.remove('certa');
-       resposta.classList.add('errada');
-       debugger;//Pressionar a tecla F12 no navegador
-       resposta.textContent1 = "Erro: Preencha os dois números!"
-   }else{
-       resposta.classList.remove('errada');
-       resposta.classList.add('certa');
-       let numero1 = pegarNum1();
-       let numero2 = pegarNum2();
-       let soma = numero1 / numero2;
-       resposta.textContent = `${numero1} + ${numero2} = ${subtrair}`;
-   }
-}
-
-//Atualizar o campo de resposta de acordo com a função
-function atualizaResposta() {
-   if(verificarEntradasVazias()){
-       resposta.classList.remove('certa');
-       resposta.classList.add('errada');
-       //debugger;
-       resposta.textContent = "Erro: Preencha os dois números!"
-   }else{
-       resposta.classList.remove('errada');
-       resposta.classList.add('certa');
-       let numero1 = pegarNum1();
-       numero1 = parseFloat(numero1);//Convertendo para número Real
-       let numero2 = pegarNum2();
-       numero2 = parseFloat(numero2);//Convertendo para número Real
-       let subtrair = numero1 / numero2;
-       resposta.textContent = `${numero1} + ${numero2} = ${subtrair}`;
-    }
-     
-  }
-  
-   
-  //Definição das variáveis
-//Conexão com os elementos HTML
-//Campos de entrada
-let entradas = document.querySelectorAll('input');
-//Botão dividir
-let btnDividir = document.querySelector('#btnDividir');
-//Parágrafo de resposta
-let resposta = document.querySelector('.resposta')
- 
-//Definindo o número 1 e número 2
-let num1 = entradas[0];
-let num2 = entradas[1];
- 
-//Funções para pegar os valores
-function pegarNum1() {
-   return num1.value;
-}
-function pegarNum2() {
-   return num2.value;
-}
- 
-//Verificando se as entradas estão vazias
-function verificarEntradasVazias() {
-   //Se num1 ou num2 estiverem vazios
-   if(pegarNum1() === '' || pegarNum2() === ''){
-       return true; //Retorna verdadeiro
-   }else{ //Senão
-       return false; //Retorna Falso
-   }
-}
- 
-//Função Dividir
-function Dividir(){
-   if(verificarEntradasVazias()){
-       atualizaResposta();
-   }else{
-       atualizaResposta();
-   }
-}
- 
-//Escuta de evento click do mouse
-btnDividir.addEventListener('click',dividir);
- 
-//Atualizar o campo de resposta de acordo com a função
-function atualizaResposta() {
-   if(verificarEntradasVazias()){
-       resposta.textContent = "Erro: Preencha os dois números!"
-   }else{
-       let numero1 = pegarNum1();
-       let numero2 = pegarNum2();
-       let dividir = numero1 * numero2;
-       resposta.textContent = `${numero1} + ${numero2} = ${dividir}`;
-   }
-}
-
-/*Estilização da classe Resposta*/
-.resposta {
-   /*Centralizando o elemento na página*/
-   margin: 10px auto;
-   padding: 5px;
-   text-align: center;
-   border: 1px dotted white;
-   width: fit-content;
-}
-.errada {
-   background-color: red;
-   color: yellow;
-   outline: 2px double orange;
-}
-.certa {
-   background-color: palegreen;
-   color: blue;
-   outline: 2px double greenyellow;
-}
-
-//Atualizar o campo de resposta de acordo com a função dividir
-function atualizaResposta() {
-   if(verificarEntradasVazias()){
-       resposta.classList.remove('certa');
-       resposta.classList.add('errada');
-       resposta.textContent = "Erro: Preencha os dois números!"
-   }else{
-       resposta.classList.remove('errada');
-       resposta.classList.add('certa');
-       let numero1 = pegarNum1();
-       let numero2 = pegarNum2();
-       let dividir = numero1 * numero2;
-       resposta.textContent = `${numero1} + ${numero2} = ${dividir}`;
-   }
-}
-
-//Atualizar o campo de resposta de acordo com a função
-function atualizaResposta() {
-   if(verificarEntradasVazias()){
-       resposta.classList.remove('certa');
-       resposta.classList.add('errada');
-       debugger;//Pressionar a tecla F12 no navegador
-       resposta.textContent1 = "Erro: Preencha os dois números!"
-   }else{
-       resposta.classList.remove('errada');
-       resposta.classList.add('certa');
-       let numero1 = pegarNum1();
-       let numero2 = pegarNum2();
-       let dividir = numero1 * numero2;
-       resposta.textContent = `${numero1} + ${numero2} = ${dividir}`;
-   }
-}
-
-//Atualizar o campo de resposta de acordo com a função
-function atualizaResposta() {
-   if(verificarEntradasVazias()){
-       resposta.classList.remove('certa');
-       resposta.classList.add('errada');
-       //debugger;
-       resposta.textContent = "Erro: Preencha os dois números!"
-   }else{
-       resposta.classList.remove('errada');
-       resposta.classList.add('certa');
-       let numero1 = pegarNum1();
-       numero1 = parseFloat(numero1);//Convertendo para número Real
-       let numero2 = pegarNum2();
-       numero2 = parseFloat(numero2);//Convertendo para número Real
-       let dividir = numero1 * numero2;
-       resposta.textContent = `${numero1} + ${numero2} = ${dividir}`;
-  
-   
-  //Definição das variáveis
-//Conexão com os elementos HTML
-//Campos de entrada
-let entradas = document.querySelectorAll('input');
-//Botão multiplicar
-let btnMultiplicar = document.querySelector('#btnMultiplicar');
-//Parágrafo de resposta
-let resposta = document.querySelector('.resposta')
- 
-//Definindo o número 1 e número 2
-let num1 = entradas[0];
-let num2 = entradas[1];
- 
-//Funções para pegar os valores
-function pegarNum1() {
-   return num1.value;
-}
-function pegarNum2() {
-   return num2.value;
-}
- 
-//Verificando se as entradas estão vazias
-function verificarEntradasVazias() {
-   //Se num1 ou num2 estiverem vazios
-   if(pegarNum1() === '' || pegarNum2() === ''){
-       return true; //Retorna verdadeiro
-   }else{ //Senão
-       return false; //Retorna Falso
-   }
-}
- 
-//Função multiplicar
-function multiplicar(){
-   if(verificarEntradasVazias()){
-       atualizaResposta();
-   }else{
-       atualizaResposta();
-   }
-}
- 
-//Escuta de evento click do mouse
-btnMultiplicar.addEventListener('click',multiplicar);
- 
-//Atualizar o campo de resposta de acordo com a função
-function atualizaResposta() {
-   if(verificarEntradasVazias()){
-       resposta.textContent = "Erro: Preencha os dois números!"
-   }else{
-       let numero1 = pegarNum1();
-       let numero2 = pegarNum2();
-       let multiplicar = numero1 . numero2;
-       resposta.textContent = `${numero1} + ${numero2} = ${multiplicar}`;
-   }
-}
-
-/*Estilização da classe Resposta*/
-.resposta {
-   /*Centralizando o elemento na página*/
-   margin: 10px auto;
-   padding: 5px;
-   text-align: center;
-   border: 1px dotted white;
-   width: fit-content;
-}
-.errada {
-   background-color: red;
-   color: yellow;
-   outline: 2px double orange;
-}
-.certa {
-   background-color: palegreen;
-   color: blue;
-   outline: 2px double greenyellow;
-}
-
-//Atualizar o campo de resposta de acordo com a função
-function atualizaResposta() {
-   if(verificarEntradasVazias()){
-       resposta.classList.remove('certa');
-       resposta.classList.add('errada');
-       resposta.textContent = "Erro: Preencha os dois números!"
-   }else{
-       resposta.classList.remove('errada');
-       resposta.classList.add('certa');
-       let numero1 = pegarNum1();
-       let numero2 = pegarNum2();
-       let multiplicar = numero1 . numero2;
-       resposta.textContent = `${numero1} + ${numero2} = ${multiplicar}`;
-   }
-}
-
-//Atualizar o campo de resposta de acordo com a função
-function atualizaResposta() {
-   if(verificarEntradasVazias()){
-       resposta.classList.remove('certa');
-       resposta.classList.add('errada');
-       debugger;//Pressionar a tecla F12 no navegador
-       resposta.textContent1 = "Erro: Preencha os dois números!"
-   }else{
-       resposta.classList.remove('errada');
-       resposta.classList.add('certa');
-       let numero1 = pegarNum1();
-       let numero2 = pegarNum2();
-       let multiplicar = numero1 . numero2;
-       resposta.textContent = `${numero1} + ${numero2} = ${multiplicar}`;
-   }
-}
-
-//Atualizar o campo de resposta de acordo com a função
-function atualizaResposta() {
-   if(verificarEntradasVazias()){
-       resposta.classList.remove('certa');
-       resposta.classList.add('errada');
-       //debugger;
-       resposta.textContent = "Erro: Preencha os dois números!"
-   }else{
-       resposta.classList.remove('errada');
-       resposta.classList.add('certa');
-       let numero1 = pegarNum1();
-       numero1 = parseFloat(numero1);//Convertendo para número Real
-       let numero2 = pegarNum2();
-       numero2 = parseFloat(numero2);//Convertendo para número Real
-       let multiplicar = numero1 . numero2;
-       resposta.textContent = `${numero1} + ${numero2} = ${multiplicar}`;
-  
+    <form action = "" name="calc">
+        <div id="calculadora">
+            <input type="text" id="visor" name="visor">
+            <div id="Primeira">
+                <input type="button" value="7"class="botao borda" onclick="botao(value)">
+                <input type="button" value="8"class="botao borda" onclick="botao(value)">
+                <input type="button" value="9"class="botao borda" onclick="botao(value)">
+                <input type="button" value="/"class="botao borda" onclick="botao(value)">
+            </div>
+            <div id="segunda">
+                <input type="button" value="4"class="botao borda" onclick="botao(value)">
+                <input type="button" value="5"class="botao borda" onclick="botao(value)">
+                <input type="button" value="6"class="botao borda" onclick="botao(value)">
+                <input type="button" value="*"class="botao borda" onclick="botao(value)">
+            </div>
+            <div id="terceira">
+                <input type="button" value="1"class="botao borda" onclick="botao(value)">
+                <input type="button" value="2"class="botao borda" onclick="botao(value)">
+                <input type="button" value="3"class="botao borda" onclick="botao(value)">
+                <input type="button" value="-"class="botao borda" onclick="botao(value)">
+            </div>
+            <div id="quarta">
+                <input type="button" value="c"class="botao borda" onclick="reset() ">
+                <input type="button" value="0"class="botao borda" onclick="botao(value)">
+                <input type="button" value="="class="botao borda" onclick="calcula()">
+                <input type="button" value="+"class="botao borda" onclick="botao(value)">
+            </div>
+        </div>
+    </form>
+    <script src="./js/main.js"></script>
 </body>
 </html>
+
+var valor;
+var resultado;
+ function botao(num){
+    valor = document.calc.visor.value += num;
+
+}
+function reset(){
+    document.calc.visor.value = '';
+}
+function calcula(){
+    resultado = eval(valor);
+    document.calc.visor.value = resultado; 
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    outline: none;
+    font-family: 'Montserrat', sans-serif;
+   font-weight: 500;
+   font-size: 22px;
+}
+body {
+    display: flex ;
+    justify-content: center;
+    align-items:  center;
+    height: 100vh;
+    background: green ;
+}
+input[type=text]{
+    width: 428px;
+    border-radius: 5px;
+}
+input[type=button]{
+    width: 100px;
+    height: 50px;
+    margin: 2px;
+    border-radius: 5px;
+
+}
+div#calculadora{
+    display: flex;
+    background yellow; 
+}
