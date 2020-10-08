@@ -1,0 +1,12 @@
+body {
+  font-family:"tahoma";
+  color: blue;
+  background-color: #ddddff;
+}
+img {
+   width: 300px;
+   display: block;
+   margin: 0 auto; /*alinhando ao centro*/
+   transition: all 0.3s;
+   border: 5px solid white;   
+}
